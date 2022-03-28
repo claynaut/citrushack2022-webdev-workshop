@@ -34,7 +34,6 @@
   align-items: center;
   gap: 0.5rem;
   font-weight: 600;
-  cursor: pointer;
 }
 
 .accordion div {
@@ -44,6 +43,7 @@
 }
 
 .arrow {
+  cursor: pointer;
   transition: all ease-out 100ms;
 }
 

@@ -10,8 +10,8 @@ export function Accordion({ title, endOptions, children }) {
   return (
     <div className={open ? `${styles.open} ${styles.accordion}` : `${styles.accordion}`}>
       <span className={styles.header}>
-        <h3 onClick={() => toggleOpen()}>
-          <BiRightArrow className={styles.arrow} /> {title}
+        <h3>
+          <BiRightArrow className={styles.arrow} onClick={() => toggleOpen()} /> {title}
         </h3>
         {endOptions}
       </span>
