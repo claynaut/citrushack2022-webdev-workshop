@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { AccordionDemo, SingleListDemo, DynamicListsDemo } from '../components/Demo'
+import { AccordionDemo, SingleListDemo, MultipleListsDemo } from '../components/Demo'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
       <main className={styles.main}>
         <AccordionDemo />
         <SingleListDemo />
-        <DynamicListsDemo />
+        <MultipleListsDemo />
       </main>
     </div>
   )

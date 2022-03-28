@@ -4,7 +4,7 @@ import { BiPlus } from 'react-icons/bi'
 import { TodoList } from '../TodoList'
 import styles from '../../styles/Home.module.css'
 
-export function DynamicListsDemo() {
+export function MultipleListsDemo() {
   const [mounted, setMounted] = useState(false)
   const [lists, setLists] = useState([])
 
