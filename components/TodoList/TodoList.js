@@ -14,14 +14,22 @@ const EndOptions = () => (
   </span>
 )
 
-export function TodoList({ list, setList }) {
+export function TodoList({ id, list, lists, setLists }) {
   const { listName, tasks } = list
 
-  const toggleComplete = (id) => {
-    let listCopy = {...list}
-    let taskToUpdate = listCopy.tasks.find((task) => task.id === id)
+  const toggleComplete = (taskId) => {
+    const listIdx = lists.findIndex((list) => list.id === id)
+    let updatedList = {...list}
+    let taskToUpdate = updatedList.tasks.find((task) => task.id === taskId)
     taskToUpdate.complete = !taskToUpdate.complete
-    setList(listCopy)
+
+    setLists(prevLists => {
+      return [
+        ...prevLists.slice(0, listIdx),
+        updatedList,
+        ...prevLists.slice(listIdx + 1)
+      ]
+    })
   }
 
   return (

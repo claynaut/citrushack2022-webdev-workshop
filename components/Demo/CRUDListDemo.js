@@ -7,6 +7,10 @@ import styles from '../../styles/Home.module.css'
 export function CRUDListDemo() {
   const [lists, setLists] = useState([])
 
+  const createList = () => {
+    
+  }
+
   return (
     <>
       <h2 className={styles.title}>

@@ -26,17 +26,22 @@ export function StaticListDemo() {
       }
     ]
   }
-  const [sampleList, setSampleList] = useState(mockSampleList)
+  const [sampleLists, setSampleLists] = useState([mockSampleList])
 
   return (
     <>
       <h2 className={styles.title}>
         Static To-Do List Demo
       </h2>
-      <TodoList
-        list={sampleList}
-        setList={setSampleList}
-      />
+      { sampleLists.map((list) =>
+        <TodoList
+          key={list.id}
+          id={list.id}
+          list={list}
+          lists={sampleLists}
+          setLists={setSampleLists}
+        />
+      )}
     </>
   )
 }
