@@ -33,3 +33,7 @@
   color: #9ca3af;
   text-decoration: line-through;
 }
+
+.taskNameInput {
+  font-size: 1rem;
+}

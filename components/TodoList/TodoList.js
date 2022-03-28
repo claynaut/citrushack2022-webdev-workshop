@@ -5,7 +5,7 @@ import { Task } from './Task';
 import styles from '../../styles/TodoList.module.css'
 import { nanoid } from 'nanoid';
 
-const EndOptions = ({ editAction, deleteAction }) => (
+export const EndOptions = ({ editAction, deleteAction }) => (
   <span className={styles.options} onClick={() => editAction()}>
     <button className={styles.edit}>
       <BiEdit />
@@ -54,7 +54,6 @@ export function TodoList({ id, list, lists, setLists }) {
     if (e.key === 'Enter') {
       let updatedList = {...list}
       updatedList.listName = newName
-      console.log(updatedList)
 
       setLists(prevLists => {
         return [
@@ -84,28 +83,18 @@ export function TodoList({ id, list, lists, setLists }) {
     })
   }
 
-  const deleteTask = (taskId) => {
-    let updatedList = {...list}
-    const taskIdx = updatedList.tasks.findIndex((task) => task.id === taskId)
-    updatedList.tasks = [
-      ...(updatedList.tasks).slice(0, taskIdx),
-      ...(updatedList.tasks).slice(taskIdx + 1)
-    ]
-
-    setLists(prevLists => {
-      return [
-        ...prevLists.slice(0, listIdx),
-        updatedList,
-        ...prevLists.slice(listIdx + 1)
-      ]
-    })
-  }
-
   return (
     <Accordion 
       title={
         editable
-        ? <input type='text' value={newName} onChange={handleListNameChange} onKeyDown={editListName}/>
+        ? 
+        <input
+          type='text'
+          value={newName}
+          onChange={handleListNameChange}
+          onKeyDown={editListName}
+          className={styles.listNameInput}
+        />
         : listName
       } 
       endOptions={
@@ -126,12 +115,9 @@ export function TodoList({ id, list, lists, setLists }) {
             taskName={taskName}
             complete={complete}
             toggleComplete={toggleComplete}
-            endOptions={
-              <EndOptions
-                editAction={() => {}}
-                deleteAction={() => deleteTask(id)}
-              />
-            }
+            list={list}
+            lists={lists}
+            setLists={setLists}
           />
         )}
         <ul>
