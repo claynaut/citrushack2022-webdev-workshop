@@ -1,14 +1,15 @@
+import { useState } from 'react'
 import { BiPlus, BiTrash, BiEdit } from 'react-icons/bi'
 import { Accordion } from '../Accordion';
 import { Task } from './Task';
 import styles from '../../styles/TodoList.module.css'
 
-const EndOptions = () => (
+const EndOptions = ({ editAction, deleteAction }) => (
   <span className={styles.options}>
     <button className={styles.edit}>
       <BiEdit />
     </button>
-    <button className={styles.delete}>
+    <button className={styles.delete} onClick={() => deleteAction()}>
       <BiTrash />
     </button>
   </span>
@@ -16,6 +17,7 @@ const EndOptions = () => (
 
 export function TodoList({ id, list, lists, setLists }) {
   const { listName, tasks } = list
+  const [editable, setEditable] = useState(false)
 
   const toggleComplete = (taskId) => {
     const listIdx = lists.findIndex((list) => list.id === id)
@@ -32,10 +34,25 @@ export function TodoList({ id, list, lists, setLists }) {
     })
   }
 
+  const deleteList = () => {
+    const listIdx = lists.findIndex((list) => list.id === id)
+
+    setLists(prevLists => {
+      return [
+        ...prevLists.slice(0, listIdx),
+        ...prevLists.slice(listIdx + 1)
+      ]
+    })
+  }
+
   return (
     <Accordion 
       title={listName} 
-      endOptions={<EndOptions />}
+      endOptions={
+        <EndOptions 
+          deleteAction={deleteList}
+        />
+      }
     >
       <li className={styles.list}>
         { tasks.map(({ id, taskName, complete }) =>
@@ -45,7 +62,10 @@ export function TodoList({ id, list, lists, setLists }) {
             taskName={taskName}
             complete={complete}
             toggleComplete={toggleComplete}
-            endOptions={<EndOptions />}
+            endOptions={
+              <EndOptions
+              />
+            }
           />
         )}
         <ul>

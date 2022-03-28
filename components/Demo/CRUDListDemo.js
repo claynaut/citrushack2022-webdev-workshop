@@ -8,7 +8,12 @@ export function CRUDListDemo() {
   const [lists, setLists] = useState([])
 
   const createList = () => {
-    
+    const newList = {
+      id: nanoid(),
+      listName: 'Lorem Ipsum',
+      tasks: []
+    }
+    setLists(prevLists => [...prevLists, newList])
   }
 
   return (
@@ -16,9 +21,20 @@ export function CRUDListDemo() {
       <h2 className={styles.title}>
         CRUD To-Do List Demo
       </h2>
-      <button className={styles.createListButton}>
+      <button className={styles.createListButton} onClick={() => createList()}>
         <BiPlus /> Create New To-Do List
       </button>
+      <div className={styles.grid}>
+        { lists.map((list) =>
+          <TodoList
+            key={list.id}
+            id={list.id}
+            list={list}
+            lists={lists}
+            setLists={setLists}
+          />
+        )}
+      </div>
     </>
   )
 }
