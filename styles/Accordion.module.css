@@ -1,0 +1,53 @@
+.accordion {
+  width: 24rem;
+  max-height: 3.5rem;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  transition: all ease-out 200ms;
+}
+
+.open.accordion {
+  max-height: 30rem;
+  transition: all ease-in 300ms;
+}
+
+.accordion * {
+  margin: 0;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+
+.header:hover * {
+  visibility: visible;
+}
+
+.header h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.accordion div {
+  margin-left: 1.625rem;
+  padding: 1.5rem 1rem;
+  padding-top: 0;
+}
+
+.arrow {
+  transition: all ease-out 100ms;
+}
+
+.open .arrow {
+  transform: rotate(90deg);
+  transition: all ease-in 150ms;
+}

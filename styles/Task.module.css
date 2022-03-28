@@ -1,0 +1,35 @@
+.listItem {
+  position: relative;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.listItem:hover * {
+  visibility: visible;
+}
+
+.checked.listItem:hover button,
+.checked.listItem:hover button * {
+  visibility: hidden !important;
+}
+
+.task {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.checkbox {
+  cursor: pointer;
+}
+
+.checked .checkbox {
+  color: #0ea5e9;
+}
+
+.checked {
+  color: #9ca3af;
+  text-decoration: line-through;
+}
