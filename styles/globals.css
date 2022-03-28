@@ -20,3 +20,17 @@ button {
   font-weight: 500;
   cursor: pointer;
 }
+
+input {
+  padding: 0;
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  font-size: 1.1875rem;
+  border: none;
+  border-bottom: 1px solid #9ca3af;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 1px solid #0ea5e9;
+}

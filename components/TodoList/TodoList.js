@@ -5,7 +5,7 @@ import { Task } from './Task';
 import styles from '../../styles/TodoList.module.css'
 
 const EndOptions = ({ editAction, deleteAction }) => (
-  <span className={styles.options}>
+  <span className={styles.options} onClick={() => editAction()}>
     <button className={styles.edit}>
       <BiEdit />
     </button>
@@ -18,6 +18,7 @@ const EndOptions = ({ editAction, deleteAction }) => (
 export function TodoList({ id, list, lists, setLists }) {
   const { listName, tasks } = list
   const [editable, setEditable] = useState(false)
+  const [newName, setNewName] = useState(listName)
 
   const toggleComplete = (taskId) => {
     const listIdx = lists.findIndex((list) => list.id === id)
@@ -45,11 +46,42 @@ export function TodoList({ id, list, lists, setLists }) {
     })
   }
 
+  const handleListNameChange = (e) => {
+    e.preventDefault()
+    setNewName(e.target.value)
+  }
+
+  const editListName = (e) => {
+    if (e.key === 'Enter') {
+      const listIdx = lists.findIndex((list) => list.id === id)
+      let updatedList = {...list}
+      updatedList.listName = newName
+      console.log(updatedList)
+
+      setLists(prevLists => {
+        return [
+          ...prevLists.slice(0, listIdx),
+          updatedList,
+          ...prevLists.slice(listIdx + 1)
+        ]
+      })
+      setEditable(false)
+    }
+  }
+
   return (
     <Accordion 
-      title={listName} 
+      title={
+        editable
+        ? <input type='text' value={newName} onChange={handleListNameChange} onKeyDown={editListName}/>
+        : listName
+      } 
       endOptions={
-        <EndOptions 
+        editable 
+        ? <></>
+        :
+        <EndOptions
+          editAction={() => setEditable(true)}
           deleteAction={deleteList}
         />
       }
