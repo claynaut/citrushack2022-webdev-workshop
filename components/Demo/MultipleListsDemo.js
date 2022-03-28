@@ -31,7 +31,7 @@ export function MultipleListsDemo() {
   return (
     <>
       <h2 className={styles.title}>
-        Dynamic To-Do Lists Demo
+        Multiple To-Do Lists Demo
       </h2>
       <button className={styles.createListButton} onClick={() => createList()}>
         <BiPlus /> Create New To-Do List
