@@ -1,3 +1,3 @@
 export * from './AccordionDemo'
 export * from './SingleListDemo'
-export * from './CRUDListDemo'
+export * from './DynamicListsDemo'

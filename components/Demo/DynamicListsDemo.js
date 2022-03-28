@@ -4,7 +4,7 @@ import { BiPlus } from 'react-icons/bi'
 import { TodoList } from '../TodoList'
 import styles from '../../styles/Home.module.css'
 
-export function CRUDListDemo() {
+export function DynamicListsDemo() {
   const [lists, setLists] = useState([])
 
   const createList = () => {
@@ -19,7 +19,7 @@ export function CRUDListDemo() {
   return (
     <>
       <h2 className={styles.title}>
-        CRUD To-Do List Demo
+        Dynamic To-Do Lists Demo
       </h2>
       <button className={styles.createListButton} onClick={() => createList()}>
         <BiPlus /> Create New To-Do List
