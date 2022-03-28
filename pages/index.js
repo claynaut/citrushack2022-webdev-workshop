@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { AccordionDemo, StaticListDemo, CRUDListDemo } from '../components/Demo'
+import { AccordionDemo, SingleListDemo, CRUDListDemo } from '../components/Demo'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <AccordionDemo />
-        <StaticListDemo />
+        <SingleListDemo />
         <CRUDListDemo />
       </main>
     </div>

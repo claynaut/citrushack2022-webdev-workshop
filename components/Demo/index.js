@@ -1,3 +1,3 @@
 export * from './AccordionDemo'
-export * from './StaticListDemo'
+export * from './SingleListDemo'
 export * from './CRUDListDemo'

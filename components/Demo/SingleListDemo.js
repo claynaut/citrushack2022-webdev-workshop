@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid'
 import { TodoList } from '../TodoList'
 import styles from '../../styles/Home.module.css'
 
-export function StaticListDemo() {
+export function SingleListDemo() {
   const mockSampleListId = nanoid()
   const mockSampleList = {
     id: mockSampleListId,
@@ -31,7 +31,7 @@ export function StaticListDemo() {
   return (
     <>
       <h2 className={styles.title}>
-        Static To-Do List Demo
+        Single To-Do List Demo
       </h2>
       { sampleLists.map((list) =>
         <TodoList
