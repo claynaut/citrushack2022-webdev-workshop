@@ -1,20 +1,10 @@
 import { useState } from 'react'
-import { BiPlus, BiTrash, BiEdit } from 'react-icons/bi'
+import { BiPlus } from 'react-icons/bi'
 import { Accordion } from '../Accordion';
 import { Task } from './Task';
+import { Options } from './Options';
 import styles from '../../styles/TodoList.module.css'
 import { nanoid } from 'nanoid';
-
-export const EndOptions = ({ editAction, deleteAction }) => (
-  <span className={styles.options} onClick={() => editAction()}>
-    <button className={styles.edit}>
-      <BiEdit />
-    </button>
-    <button className={styles.delete} onClick={() => deleteAction()}>
-      <BiTrash />
-    </button>
-  </span>
-)
 
 export function TodoList({ id, list, lists, setLists }) {
   const { listName, tasks } = list
@@ -97,11 +87,11 @@ export function TodoList({ id, list, lists, setLists }) {
         />
         : listName
       } 
-      endOptions={
+      options={
         editable 
         ? <></>
         :
-        <EndOptions
+        <Options
           editAction={() => setEditable(true)}
           deleteAction={deleteList}
         />

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ImCheckboxUnchecked, ImCheckboxChecked } from 'react-icons/im'
-import { EndOptions } from './TodoList'
+import { Options } from './Options'
 import styles from '../../styles/Task.module.css'
 
 export function Task({ id, taskName, complete, toggleComplete, list, lists, setLists }) {
@@ -67,7 +67,7 @@ export function Task({ id, taskName, complete, toggleComplete, list, lists, setL
           : taskName
         }
       </span>
-      <EndOptions
+      <Options
         editAction={() => setEditable(true)}
         deleteAction={() => deleteTask(id)}
       />

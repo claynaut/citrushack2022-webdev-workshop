@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { BiRightArrow } from 'react-icons/bi'
 import styles from '../styles/Accordion.module.css'
 
-export function Accordion({ title, endOptions, children }) {
+export function Accordion({ title, options, children }) {
   const [open, setOpen] = useState(true)
 
   const toggleOpen = () => { setOpen(!open) }
@@ -13,7 +13,7 @@ export function Accordion({ title, endOptions, children }) {
         <h3>
           <BiRightArrow className={styles.arrow} onClick={() => toggleOpen()} /> {title}
         </h3>
-        {endOptions}
+        {options}
       </span>
       <div>
         {children}
