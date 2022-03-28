@@ -10,8 +10,8 @@
   visibility: visible;
 }
 
-.checked.listItem:hover button,
-.checked.listItem:hover button * {
+.checked.listItem:hover button:nth-of-type(1),
+.checked.listItem:hover button:nth-of-type(1) * {
   visibility: hidden !important;
 }
 
