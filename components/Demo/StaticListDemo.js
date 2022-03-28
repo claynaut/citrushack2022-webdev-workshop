@@ -11,17 +11,17 @@ export function StaticListDemo() {
     tasks: [
       {
         id: mockSampleListId + '-1',
-        taskName: 'Task one.',
+        taskName: 'Task one',
         complete: false
       },
       {
         id: mockSampleListId + '-2',
-        taskName: 'Task two.',
+        taskName: 'Task two',
         complete: false
       },
       {
         id: mockSampleListId + '-3',
-        taskName: 'Task three.',
+        taskName: 'Task three',
         complete: false
       }
     ]
