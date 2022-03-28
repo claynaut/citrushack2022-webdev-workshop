@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { nanoid } from 'nanoid'
 import { BiPlus } from 'react-icons/bi'
 import { TodoList } from '../TodoList'
 import styles from '../../styles/Home.module.css'
 
 export function DynamicListsDemo() {
+  const [mounted, setMounted] = useState(false)
   const [lists, setLists] = useState([])
 
   const createList = () => {
@@ -15,6 +16,17 @@ export function DynamicListsDemo() {
     }
     setLists(prevLists => [...prevLists, newList])
   }
+
+  useEffect(() => {
+    if (!mounted) { 
+      if (localStorage.getItem('lists')) {
+        const savedLists = JSON.parse(localStorage.getItem('lists'))
+        setLists(savedLists)
+      }
+    }
+    setMounted(true)
+    localStorage.setItem('lists', JSON.stringify(lists))
+  }, [lists, mounted])
 
   return (
     <>
