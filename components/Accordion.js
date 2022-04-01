@@ -15,8 +15,10 @@ export function Accordion({ title, options, children }) {
         </h3>
         {options}
       </span>
-      <div>
-        {children}
+      <div className={styles.content}>
+        <div>
+          {children}
+        </div>
       </div>
     </div>
   )
