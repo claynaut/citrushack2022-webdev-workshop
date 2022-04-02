@@ -11,51 +11,7 @@ export function TodoList({ id, list, lists, setLists }) {
   const listIdx = lists.findIndex((list) => list.id === id)
   const [editable, setEditable] = useState(false)
   const [newName, setNewName] = useState(listName)
-
-  const toggleComplete = (taskId) => {
-    let updatedList = {...list}
-    let taskToUpdate = updatedList.tasks.find((task) => task.id === taskId)
-    taskToUpdate.complete = !taskToUpdate.complete
-
-    setLists(prevLists => {
-      return [
-        ...prevLists.slice(0, listIdx),
-        updatedList,
-        ...prevLists.slice(listIdx + 1)
-      ]
-    })
-  }
-
-  const deleteList = () => {
-    setLists(prevLists => {
-      return [
-        ...prevLists.slice(0, listIdx),
-        ...prevLists.slice(listIdx + 1)
-      ]
-    })
-  }
-
-  const handleListNameChange = (e) => {
-    e.preventDefault()
-    setNewName(e.target.value)
-  }
-
-  const editListName = (e) => {
-    if (e.key === 'Enter') {
-      let updatedList = {...list}
-      updatedList.listName = newName
-
-      setLists(prevLists => {
-        return [
-          ...prevLists.slice(0, listIdx),
-          updatedList,
-          ...prevLists.slice(listIdx + 1)
-        ]
-      })
-      setEditable(false)
-    }
-  }
-
+  
   const createTask = () => {
     const newTask = {
       id: nanoid(),
@@ -73,6 +29,36 @@ export function TodoList({ id, list, lists, setLists }) {
     })
   }
 
+  const handleListNameChange = (e) => {
+    e.preventDefault()
+    setNewName(e.target.value)
+  }
+
+  const updateListName = (e) => {
+    if (e.key === 'Enter') {
+      let updatedList = {...list}
+      updatedList.listName = newName
+
+      setLists(prevLists => {
+        return [
+          ...prevLists.slice(0, listIdx),
+          updatedList,
+          ...prevLists.slice(listIdx + 1)
+        ]
+      })
+      setEditable(false)
+    }
+  }
+
+  const deleteList = () => {
+    setLists(prevLists => {
+      return [
+        ...prevLists.slice(0, listIdx),
+        ...prevLists.slice(listIdx + 1)
+      ]
+    })
+  }
+
   return (
     <Accordion 
       title={
@@ -82,7 +68,7 @@ export function TodoList({ id, list, lists, setLists }) {
           type='text'
           value={newName}
           onChange={handleListNameChange}
-          onKeyDown={editListName}
+          onKeyDown={updateListName}
           className={styles.listNameInput}
         />
         : listName
@@ -92,7 +78,7 @@ export function TodoList({ id, list, lists, setLists }) {
         ? <></>
         :
         <Options
-          editAction={() => setEditable(true)}
+          updateAction={() => setEditable(true)}
           deleteAction={deleteList}
         />
       }
@@ -104,7 +90,6 @@ export function TodoList({ id, list, lists, setLists }) {
             id={id}
             taskName={taskName}
             complete={complete}
-            toggleComplete={toggleComplete}
             list={list}
             lists={lists}
             setLists={setLists}

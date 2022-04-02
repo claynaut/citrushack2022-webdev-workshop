@@ -18,6 +18,7 @@ export function MultipleListsDemo() {
   }
 
   useEffect(() => {
+    // we check that the component hasn't mounted yet so we don't continuously load the saved state
     if (!mounted) { 
       if (localStorage.getItem('lists')) {
         const savedLists = JSON.parse(localStorage.getItem('lists'))
