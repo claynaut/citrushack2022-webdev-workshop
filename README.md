@@ -66,7 +66,7 @@ Introduce Next.js app development, implementing features like CRUD using useStat
 
 ## What is Next.js?
 
-Next.js is an open-source web development framework built on top of Node.js enabling React based web applications functionalities such as server-side rendering and generating static websites. ([Wikipedia](https://en.wikipedia.org/wiki/Next.js))
+Next.js is an open-source web development framework built on top of Node.js enabling React-based web app functionalities such as server-side rendering and generating static websites. ([Wikipedia](https://en.wikipedia.org/wiki/Next.js))
 
 Essentially, Next.js is a React framework that extends the features of a basic React app to improve performance and provide a seamless setup.
 
@@ -121,7 +121,7 @@ However, in this workshop, we’ll work with the provided code to focus on the g
 ├── public
 ├── styles
 │   ├── Accordion.module.css
-│   ├── globals.js
+│   ├── globals.css
 │   └── ...
 └── README.md
 ```
@@ -198,7 +198,7 @@ TodoList {
 
 Task {
   id: string
-  task: string
+  taskName: string
   complete: boolean
 }
 ```
@@ -220,7 +220,6 @@ Task {
   id: string
   task: string
   complete: boolean
-	toggleComplete: () => void // setState
 	list: TodoList // parent list
 	lists: TodoList[] // master list
 	setLists: () => void // setState
@@ -229,7 +228,7 @@ Task {
 
 ### Generating a Unique ID
 
-As seen in the schemas for the To-Do List and Task components, there’s an id prop/attribute. This id needs to be a unique string in order to properly implement the CRUD features. So, how do we generate a unique ID? We can simple use the [nanoid](https://github.com/ai/nanoid) library cited earlier in the introduction.
+As seen in the schemas for the To-Do List and Task components, there’s an id prop/attribute. This id needs to be a unique string in order to properly implement the CRUD features. So, how do we generate a unique ID? We can simple use the [nanoid](https://github.com/ai/nanoid) package cited earlier in the introduction.
 
 An example can be seen in `SingleListDemo.js`:
 
@@ -255,7 +254,7 @@ We first need to have a master list that contains all our to-do lists to display
 const [lists, setLists] = useState([])
 ```
 
-Then, we can create a function that creates a new list for us and adds it to this master list. We simply follow the basic schema established earlier when creating:
+Then, we can create a function that creates a new list for us and adds it to this master list. We simply follow the basic schema established earlier when creating a new list:
 
 ```jsx
 /** MultipleListDemo.js */
@@ -300,7 +299,7 @@ const createTask = () => {
 
 We follow a similar structure of creating a new task object, but creating a task is more complicated than creating a list. Since a task is a nested attribute in the master list, we need to go through more steps to create a task:
 
-- Find the index of the parent list in the master  list
+- Find the index of the parent list in the master list
 - Create a copy of the parent list
 - Add the new task to the copied list
 - Update the state by slicing the original list out and replace it with the copied list
@@ -316,7 +315,7 @@ Options {
 }
 ```
 
-This Options component is simple a row of user action buttons to edit/update or delete a particular to-do list or task, which is why we have the respective functions as props.
+This Options component is simply a row of user action buttons to update or delete a particular to-do list or task, which is why we have the respective functions as props.
 
 ### Extending the Accordion Component
 
@@ -330,6 +329,8 @@ Accordion {
 }
 ```
 
+Note we don’t have to modify `Accordion.js` as the prop was already added. Though, it’s just important to point out this additional prop.
+
 ### **Updating Lists + Tasks**
 
 **Updating Lists**
@@ -338,7 +339,7 @@ When we update a list, there’s just two things we need to do: update the name 
 
 A simple thing we can do to update the name is replacing the name with an input field in which you can enter a new name to overwrite the previous name. To do this, we need to keep track of the following:
 
-- When you enable editing for a list name (so the app know when to display the input field)
+- When you enable editing for a list name (so the app knows when to display the input field)
     - Easily done with an `editable` state which we can just toggle to true when the user clicks the update button
 - What the new name is
     - Done with a `newName` state which we update with the live input through `handleListNameChange` which is passed directly into the input field’s `onChange` prop so that whenever the input is updated, that input is captured in `newName`
@@ -480,8 +481,6 @@ const deleteTask = () => {
 ```
 
 With all these features complete, we now have CRUD functionality!
-
-Note we don’t have to modify `Accordion.js` as the prop was already added. Though, it’s just important to point out this additional prop.
 
 ## Introducing useEffect With Persistent State
 
