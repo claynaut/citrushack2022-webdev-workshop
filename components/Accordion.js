@@ -5,7 +5,7 @@ import styles from '../styles/Accordion.module.css'
 export function Accordion({ title, options, children }) {
   const [open, setOpen] = useState(true)
 
-  const toggleOpen = () => { setOpen(!open) }
+  // code here
 
   return (
     <div className={open ? `${styles.open} ${styles.accordion}` : `${styles.accordion}`}>

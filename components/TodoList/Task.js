@@ -10,54 +10,20 @@ export function Task({ id, taskName, complete, list, lists, setLists }) {
   const [newName, setNewName] = useState(taskName)
 
   const toggleComplete = () => {
-    let updatedList = {...list}
-    let taskToUpdate = updatedList.tasks[taskIdx]
-    taskToUpdate.complete = !taskToUpdate.complete
-
-    setLists(prevLists => {
-      return [
-        ...prevLists.slice(0, listIdx),
-        updatedList,
-        ...prevLists.slice(listIdx + 1)
-      ]
-    })
+    // code here
   }
 
   const handleTaskNameChange = (e) => {
     e.preventDefault()
-    setNewName(e.target.value)
+    // code here
   }
 
   const updateTaskName = (e) => {
-    if (e.key === 'Enter') {
-      let updatedList = {...list}
-      updatedList.tasks[taskIdx].taskName = newName
-
-      setLists(prevLists => {
-        return [
-          ...prevLists.slice(0, listIdx),
-          updatedList,
-          ...prevLists.slice(listIdx + 1)
-        ]
-      })
-      setEditable(false)
-    }
+    // code here
   }
   
   const deleteTask = () => {
-    let updatedList = {...list}
-    updatedList.tasks = [
-      ...(updatedList.tasks).slice(0, taskIdx),
-      ...(updatedList.tasks).slice(taskIdx + 1)
-    ]
-
-    setLists(prevLists => {
-      return [
-        ...prevLists.slice(0, listIdx),
-        updatedList,
-        ...prevLists.slice(listIdx + 1)
-      ]
-    })
+    // code here
   }
 
   return (

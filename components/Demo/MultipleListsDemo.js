@@ -9,25 +9,12 @@ export function MultipleListsDemo() {
   const [lists, setLists] = useState([])
 
   const createList = () => {
-    const newList = {
-      id: nanoid(),
-      listName: 'Lorem Ipsum',
-      tasks: []
-    }
-    setLists(prevLists => [...prevLists, newList])
+    // code here
   }
 
   useEffect(() => {
-    // we check that the component hasn't mounted yet so we don't continuously load the saved state
-    if (!mounted) { 
-      if (localStorage.getItem('lists')) {
-        const savedLists = JSON.parse(localStorage.getItem('lists'))
-        setLists(savedLists)
-      }
-    }
-    setMounted(true)
-    localStorage.setItem('lists', JSON.stringify(lists))
-  }, [lists, mounted])
+    // code here
+  }, [])
 
   return (
     <>

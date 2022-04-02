@@ -13,50 +13,20 @@ export function TodoList({ id, list, lists, setLists }) {
   const [newName, setNewName] = useState(listName)
   
   const createTask = () => {
-    const newTask = {
-      id: nanoid(),
-      taskName: 'Lorem ipsum',
-      complete: false
-    }
-    let updatedList = {...list}
-    updatedList.tasks.push(newTask)
-    setLists(prevLists => {
-      return [
-        ...prevLists.slice(0, listIdx),
-        updatedList,
-        ...prevLists.slice(listIdx + 1)
-      ]
-    })
+    // code here
   }
 
   const handleListNameChange = (e) => {
     e.preventDefault()
-    setNewName(e.target.value)
+    // code here
   }
 
   const updateListName = (e) => {
-    if (e.key === 'Enter') {
-      let updatedList = {...list}
-      updatedList.listName = newName
-
-      setLists(prevLists => {
-        return [
-          ...prevLists.slice(0, listIdx),
-          updatedList,
-          ...prevLists.slice(listIdx + 1)
-        ]
-      })
-      setEditable(false)
-    }
+    // code here
   }
 
   const deleteList = () => {
-    setLists(prevLists => {
-      return [
-        ...prevLists.slice(0, listIdx),
-        ...prevLists.slice(listIdx + 1)
-      ]
-    })
+    // code here
   }
 
   return (
