@@ -34,7 +34,6 @@ export function Task({ id, taskName, complete, toggleComplete, list, lists, setL
     if (e.key === 'Enter') {
       let updatedList = {...list}
       updatedList.tasks[taskIdx].taskName = newName
-      console.log(updatedList)
 
       setLists(prevLists => {
         return [
